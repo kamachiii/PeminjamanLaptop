@@ -9,12 +9,12 @@
 	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
 	<meta name="author" content="freehtml5.co" />
 
-	<!-- 
+	<!--
 	//////////////////////////////////////////////////////
 
-	FREE HTML5 TEMPLATE 
+	FREE HTML5 TEMPLATE
 	DESIGNED & DEVELOPED by FreeHTML5.co
-		
+
 	Website: 		http://freehtml5.co/
 	Email: 			info@freehtml5.co
 	Twitter: 		http://twitter.com/fh5co
@@ -36,7 +36,7 @@
 
 	<!-- <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,700,800" rel="stylesheet">	 -->
 	<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
-	
+
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
 	<!-- Icomoon Icon Fonts-->
@@ -58,9 +58,9 @@
 
 	</head>
 	<body>
-		
+
 	<div class="fh5co-loader"></div>
-	
+
 	<div id="page">
 	<nav class="fh5co-nav" role="navigation">
 		<div class="top-menu">
@@ -84,11 +84,11 @@
 							</li>
 							<li><a href="about.html">About</a></li>
 							<li><a href="contact.html">Contact</a></li>
-							<li class="btn-cta"><a href="#"><span>Login</span></a></li>
+							<li class="btn-cta"><a href="{{ route('login') }}"><span>Login</span></a></li>
 						</ul>
 					</div>
 				</div>
-				
+
 			</div>
 		</div>
 	</nav>
@@ -102,7 +102,7 @@
 						<div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
 							<h1>Web Peminjaman Laptop &amp; Barang PPLG </h1>
 							<h2 style="color:#ffffff;">Pengembangan Perangkat Lunak dan Gim </h2>
-							<p><a class="btn btn-primary btn-lg btn-demo" href="{{route('create')}}"></i>Pinjam</a> 
+							<p><a class="btn btn-primary btn-lg btn-demo" href="{{route('create')}}"></i>Pinjam</a>
 							<a class="btn btn-primary btn-lg btn-learn" href="{{ route('indexPeminjaman') }}">Lihat Peminjaman</a></p>
 						</div>
 					</div>
@@ -115,7 +115,7 @@
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up22"></i></a>
 	</div>
-	
+
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->

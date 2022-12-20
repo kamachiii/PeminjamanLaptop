@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/style.css">
-    
+
 </head>
 
 <body>
@@ -41,10 +41,11 @@
                             <th>Rayon</th>
                             <th>No Laptop</th>
                             <th>Ruangan</th>
-                
+                            @if(Auth::check())
                             <th>Action</th>
                             <th>Validator</th>
-                       
+                            @endif
+
                         </tr>
                     </thead>
                     <?php $i = 1;?>
@@ -58,7 +59,7 @@
                             <td>{{$dt->rayon}}</td>
                             <td>{{$dt->no_laptop}}</td>
                             <td>{{$dt->ruangan}}</td>
-                           
+                            @if(Auth::check())
                             <td>
                                 <?php if($dt->status == 0 ){ ?>
                                 <div class="row">
@@ -72,10 +73,11 @@
                             </td>
                             @if ($dt->validator)
                                 <td>{{$dt->validator}}</td>
-                            @else 
+                            @else
                                 <td>-</td>
                             @endif
-                           
+                            @endif
+
                         </tr>
                     </tbody>
                     @endforeach

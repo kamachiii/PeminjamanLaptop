@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  
+
   <!-- CSS Libraries -->
   {{-- <link rel="stylesheet" href="../../node_modules/bootstrap-social/bootstrap-social.css">
   <link rel="stylesheet" href="../../node_modules/summernote/dist/summernote-bs4.css"> --}}
@@ -49,11 +49,14 @@
         <ul class="navbar-nav navbar-right">
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
             <img alt="image" src="../../../assets/admin/img/avatar/avatar-1.png" class="rounded-circle mr-1">
-            <div class="d-sm-none d-lg-inline-block">Hi</div></a>
+            <div class="d-sm-none d-lg-inline-block">{{ Auth()->User()->name }}</div></a>
             <div class="dropdown-menu dropdown-menu-right">
-              <a href="" class="dropdown-item has-icon text-danger">
-                <i class="fas fa-sign-out-alt"></i> Logout
-              </a>
+              <form action="{{ route('logout') }}" method="post">
+                @csrf
+                <button type="submit" class="dropdown-item has-icon text-danger">
+                  <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+              </form>
             </div>
           </li>
         </ul>
@@ -68,13 +71,14 @@
               <li class="nav-item dropdown">
                 <a href="{{route('peminjaman')}}"><i class="fas fa-home"></i><span>Dashboard</span></a>
               </li>
+              @if(Auth()->user()->is_admin == 1)
               <li class="nav-item dropdown">
                 <a href="{{route('dataLaptop')}}"><i class="fas fa-money-bill"></i> <span>Data Laptop</span></a>
               </li>
               <li class="nav-item dropdown">
                 <a href="{{route('account')}}"><i class="fas fa-book-open"></i> <span>Data Account Laboran</span></a>
               </li>
-              
+              @endif
             </ul>
         </aside>
       </div>

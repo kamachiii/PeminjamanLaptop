@@ -13,21 +13,21 @@ use App\Models\User;
 class AdminController extends Controller
 {
     public function indexPeminjaman(){
-       
+
         $data = Peminjaman::all();
 
         return view('admin.data-peminjaman', compact('data'));
     }
 
     public function indexDataLaptop(){
-       
+
         $data = DataLaptop::all();
 
         return view('admin.data-laptop', compact('data'));
     }
 
     public function indexDataLaboran(){
-       
+
         $data = User::all();
 
         return view('admin.data-laboran', compact('data'));
@@ -45,7 +45,7 @@ class AdminController extends Controller
             'is_admin' => 0,
             'password' => Hash::make($request->password),
         ]);
-        return redirect(route('account'));   
+        return redirect(route('account'));
     }
 
 
@@ -62,7 +62,7 @@ class AdminController extends Controller
             'email' => $request->email,
             'is_admin' => 0,
             'password' => Hash::make($request->password),
-           
+
         ]);
         return redirect(route('account'));
     }
@@ -80,9 +80,9 @@ class AdminController extends Controller
 
         DataLaptop::create([
             'no_laptop' => $request->no_laptop
-           
+
         ]);
-        return redirect(route('dataLaptop'));   
+        return redirect(route('dataLaptop'));
     }
 
     public function deleteLaptopData($id){

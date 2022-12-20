@@ -21,8 +21,8 @@ class PeminjamController extends Controller
 
     public function indexPeminjaman(){
 
-        
-       
+
+
         $data = Peminjaman::all();
 
         return view('peminjam.list', compact('data'));
@@ -52,5 +52,6 @@ class PeminjamController extends Controller
         return redirect('/create')->with('success','Peminjaman Berhasil Dilakukan!');
     }
 
-    
+
+
 }
