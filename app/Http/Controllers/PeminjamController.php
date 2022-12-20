@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Peminjaman;
+use Illuminate\Support\Facades\Auth;
+
 
 class PeminjamController extends Controller
 {
     public function index(){
-        return view('peminjam.index');
+        return view('index');
     }
 
     public function create(){
@@ -17,9 +19,18 @@ class PeminjamController extends Controller
         return view('peminjam.create',compact('data'));
     }
 
+    public function indexPeminjaman(){
+
+        
+       
+        $data = Peminjaman::all();
+
+        return view('peminjam.list', compact('data'));
+    }
+
     public function storePeminjaman(Request $request){
         $request->validate([
-            'nisn' => 'required|min:8',
+            'nisn' => 'required|min:8|max:8|unique:peminjaman,nisn',
             'nama' => 'required',
             'rombel' => 'required',
             'rayon' => 'required',
@@ -40,4 +51,6 @@ class PeminjamController extends Controller
 
         return redirect('/create')->with('success','Peminjaman Berhasil Dilakukan!');
     }
+
+    
 }

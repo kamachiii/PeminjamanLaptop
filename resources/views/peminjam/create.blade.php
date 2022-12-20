@@ -26,7 +26,7 @@
         border-radius: 6rem;
         width: 11%;
         margin-top: -3%;
-        transform: rotate(29deg);
+        
     }
 
     .contact-form form {
@@ -66,22 +66,35 @@
     }
 
 </style>
+
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success" role="alert">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
+   
 <div class="container contact-form">
     <div class="contact-image">
-        <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact" />
+        <img src="images/rpl.jpg">
     </div>
-    <form  action="{{route('storePeminjaman')}}" method="post">
+    <a href="/" type="submit" class="btn btn-primary float-right mr-10">back</a>
+
+
+    <form  action="{{route('storePeminjaman')}}" method="POST">
         @csrf
         <h3>Masukkan Data Peminjaman</h3>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="">NIS</label>
-                    <input type="text" name="txtName" class="form-control" placeholder="1180****" value="" />
+                    <input type="number" name="nisn" class="form-control @error('nisn') is-invalid @enderror" placeholder="1180****" value="" />
+                    @error('nisn')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="">Nama</label>
-                    <input type="text" name="txtEmail" class="form-control" placeholder="Riska" value="" />
+                    <input type="text" name="nama" class="form-control" placeholder="Riska" value="" />
                 </div>
                 <div class="form-group">
                     <label for="">Rombel</label>
@@ -96,9 +109,11 @@
                         
                     </select>
                 </div>
-                <div class="form-group">
-                    <input type="submit" name="btnSubmit" class="btnContact" value="Send Message" />
+                <div class="form-group d-flex mr-4 pr-4">
+                    <input type="submit" name="btnSubmit" class="btnContact" value="Submit" />
+                    
                 </div>
+                
             </div>
             <div class="col-md-6">
                 <div class="form-group">
@@ -121,6 +136,20 @@
                         <option value="Cibedug 3">Cibedug 3</option>
                         <option value="Tajur 4">Tajur 4</option>
                         <option value="Ciawi 5">Ciawi 5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="">Ruangan</label>
+                    <select name="ruangan"  class="form-control"  required>
+                        <option hidden>Pilih Ruangan</option>
+                        <option value="203">203 </option>
+                        <option value="206">206</option>
+                        <option value="207">207</option>
+                        <option value="210">210 </option>
+                        <option value="134">134</option>
+                        <option value="322">322</option>
+                        <option value="320">320 </option>
+                        <option value="323">323 </option>
                     </select>
                 </div>
             </div>
