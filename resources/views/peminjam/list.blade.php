@@ -41,45 +41,23 @@
                             <th>Rayon</th>
                             <th>No Laptop</th>
                             <th>Ruangan</th>
-                            @if(Auth::check())
-                            <th>Action</th>
-                            <th>Validator</th>
-                            @endif
-
                         </tr>
                     </thead>
                     <?php $i = 1;?>
                     @foreach($data as $dt)
-                    <tbody>
-                        <tr>
-                            <td>{{$i++}}</td>
-                            <td>{{$dt->nisn}}</td>
-                            <td>{{$dt->nama}}</td>
-                            <td>{{$dt->rombel}}</td>
-                            <td>{{$dt->rayon}}</td>
-                            <td>{{$dt->no_laptop}}</td>
-                            <td>{{$dt->ruangan}}</td>
-                            @if(Auth::check())
-                            <td>
-                                <?php if($dt->status == 0 ){ ?>
-                                <div class="row">
-                                    <form method="POST" action="{{route('approve')}}">
-                                        @csrf
-                                        <input type="hidden" name="nisn" value="{{$dt->nisn}}">
-                                        <input type="submit" value="Validasi" class="btn btn-primary btn-lg btn-demo">
-                                    </form>
-                                </div>
-                                <?php }else{echo "Peminjaman Divalidasi";} ?>
-                            </td>
-                            @if ($dt->validator)
-                                <td>{{$dt->validator}}</td>
-                            @else
-                                <td>-</td>
-                            @endif
-                            @endif
-
-                        </tr>
-                    </tbody>
+                        @if ($dt->status == 0)
+                            <tbody>
+                                <tr>
+                                    <td>{{$i++}}</td>
+                                    <td>{{$dt->nisn}}</td>
+                                    <td>{{$dt->nama}}</td>
+                                    <td>{{$dt->rombel}}</td>
+                                    <td>{{$dt->rayon}}</td>
+                                    <td>{{$dt->no_laptop}}</td>
+                                    <td>{{$dt->ruangan}}</td>
+                                </tr>
+                            </tbody>
+                        @endif
                     @endforeach
                 </table>
             </div>

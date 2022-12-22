@@ -21,7 +21,7 @@ class IsAdmin
             return $next($request);
        }
 
-       return redirect('index')->with('error','You have not admin access');
+       return redirect('peminjaman')->with('error','You have not admin access');
 
     }
 }

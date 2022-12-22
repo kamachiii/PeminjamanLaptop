@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('peminjaman', function (Blueprint $table) {
             $table->id();
-            $table->integer('nisn')->unique();
+            $table->integer('nisn');
             $table->string('nama');
             $table->string('rombel');
             $table->string('rayon');

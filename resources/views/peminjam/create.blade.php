@@ -26,7 +26,7 @@
         border-radius: 6rem;
         width: 11%;
         margin-top: -3%;
-        
+
     }
 
     .contact-form form {
@@ -72,7 +72,7 @@
             <p>{{ $message }}</p>
         </div>
     @endif
-   
+
 <div class="container contact-form">
     <div class="contact-image">
         <img src="images/rpl.jpg">
@@ -105,26 +105,24 @@
                         <option value="PPLG XI-3">PPLG XI-3</option>
                         <option value="PPLG XI-4">PPLG XI-4</option>
                         <option value="PPLG XI-5">PPLG XI-5</option>
-                        
-                        
+
+
                     </select>
                 </div>
                 <div class="form-group d-flex mr-4 pr-4">
                     <input type="submit" name="btnSubmit" class="btnContact" value="Submit" />
-                    
+
                 </div>
-                
+
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="">No Laptop</label>
                     <select name="no_laptop"  class="form-control"  required>
                         <option hidden>Pilih Nomor Laptop</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
+                            @foreach($laptop as $device)
+                                <option>{{ $device->no_laptop }}</option>
+                            @endforeach
                     </select>
                 </div>
                 <div class="form-group">

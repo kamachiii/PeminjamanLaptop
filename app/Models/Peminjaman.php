@@ -20,4 +20,12 @@ class Peminjaman extends Model
         'keterangan',
         'validator'
     ];
+
+    public function User(){
+        return $this->hasMany('App\Models\User');
+    }
+
+    public function DataLaptop(){
+        return $this->belongsTo('App\Models\DataLaptop');
+    }
 }

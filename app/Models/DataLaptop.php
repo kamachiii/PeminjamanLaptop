@@ -10,4 +10,8 @@ class DataLaptop extends Model
     use HasFactory;
     protected $table ='data_laptop';
     protected $fillable =['no_laptop'];
+
+    public function peminjaman(){
+        return $this->hasMany('App\Models\Peminjaman');
+    }
 }

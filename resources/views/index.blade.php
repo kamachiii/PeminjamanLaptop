@@ -84,7 +84,11 @@
 							</li>
 							<li><a href="about.html">About</a></li>
 							<li><a href="contact.html">Contact</a></li>
-							<li class="btn-cta"><a href="{{ route('login') }}"><span>Login</span></a></li>
+							@if(Auth::check())
+								<li class="btn-cta"><a href="{{ route('peminjaman') }}"><span>Dashboard</span></a></li>
+							@else
+								<li class="btn-cta"><a href="{{ route('login') }}"><span>Login</span></a></li>
+							@endif
 						</ul>
 					</div>
 				</div>
@@ -103,7 +107,11 @@
 							<h1>Web Peminjaman Laptop &amp; Barang PPLG </h1>
 							<h2 style="color:#ffffff;">Pengembangan Perangkat Lunak dan Gim </h2>
 							<p><a class="btn btn-primary btn-lg btn-demo" href="{{route('create')}}"></i>Pinjam</a>
-							<a class="btn btn-primary btn-lg btn-learn" href="{{ route('indexPeminjaman') }}">Lihat Peminjaman</a></p>
+								@auth
+
+								@else
+									<a class="btn btn-primary btn-lg btn-learn" href="{{ route('indexPeminjaman') }}">Lihat Peminjaman</a></p>
+								@endauth
 						</div>
 					</div>
 				</div>

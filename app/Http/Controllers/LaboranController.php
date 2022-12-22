@@ -21,8 +21,8 @@ class LaboranController extends Controller
             'validator'=>Auth::user()->name,
         ]);
 
-        return redirect(route('indexPeminjaman'));
+        return redirect(route('peminjaman'));
     }
 
-   
+
 }

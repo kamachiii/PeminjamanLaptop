@@ -6,7 +6,7 @@
     <div class="section-header">
         <h1>Data Peminjaman</h1>
         <div class="section-header-breadcrumb">
-            
+
         </div>
     </div>
     <div class="section-body">
@@ -23,6 +23,7 @@
                     <th>No Laptop</th>
                     <th>Ruangan</th>
                     <th>Validator</th>
+                    <th>Tanggal divalidasi</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,9 +39,15 @@
                     <td>{{$dt->no_laptop}}</td>
                     <td>{{$dt->ruangan}}</td>
                     @if ($dt->validator)
-                    <td>{{$dt->validator}}</td>
+                        <td>{{$dt->validator}}</td>
+                        <td>{{$dt->updated_at}}</td>
                     @else
-                    <td>-</td>
+                        <td><form method="POST" action="{{route('validate')}}">
+                            @csrf
+                            <input type="hidden" name="nisn" value="{{$dt->nisn}}">
+                            <input type="submit" value="Validasi" class="btn btn-primary btn-lg btn-demo">
+                        </form></td>
+                        <td>-</td>
                     @endif
                 </tr>
                 @endforeach

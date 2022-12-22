@@ -76,36 +76,36 @@
 
 </style>
 
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success" role="alert">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
 
 <div class="container contact-form">
     <div class="contact-image">
         <img src="images/rpl.jpg">
     </div>
-    <a href="/" type="submit" class="btn btn-primary float-right mr-10">back</a>
+    <a href="/" type="submit" class="btn btn-primary float-right mr-10 pr-4 pl-4">back</a>
 
 
     <form  action="{{ route('loginStore') }}" method="POST">
         @csrf
         <h3>Login</h3>
+        {{-- @if ($message = Session::get('error'))
+            <div class="alert alert-danger" role="alert">
+                <p>{{ $message }}</p>
+            </div>
+        @endif --}}
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="form-group">
                     <label for="">Email</label>
                     <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="example@gmail.com"/>
                     @error('email')
-                        <div class="text-danger">{{ $message }}</div>
+                        <div class="text-danger">{{ Session::get('email') }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="">Password</label>
                     <input type="password" name="password" class="form-control" placeholder="********" />
                 </div>
-                <div class="form-group d-flex mr-4 pr-4">
+                <div class="form-group text-center">
                     <input type="submit" name="btnSubmit" class="btnContact" value="Submit" />
 
                 </div>

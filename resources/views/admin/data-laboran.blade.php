@@ -6,7 +6,7 @@
     <div class="section-header">
         <h1>Data Account Laboran</h1>
         <div class="section-header-breadcrumb">
-           
+
             <div class="breadcrumb-item">Data Account</div>
         </div>
     </div>
@@ -19,25 +19,25 @@
                 <tr>
                     <th>No</th>
                     <th>Nama</th>
-                    <th>Username</th>
+                    <th>Email</th>
                     <th>Action</th>
-                   
+
                 </tr>
             </thead>
             <tbody>
                 <?php $i = 1;?>
                 @foreach($data as $dt)
-
-                <tr>
-                    <td>{{$i++}}</td>
-                    <td>{{$dt->name}}</td>
-                    <td>{{$dt->email}}</td>
-                    <td>
-                    <a href="{{ route('editLaboran', ['id' => $dt->id]) }}" class="btn btn-primary mr-1">Edit Data</i></a>
-                    <a href="{{ route('deleteLaboranData', ['id' => $dt->id]) }}" class="btn btn-danger mr-1">Hapus Data</i></a>
-                    </td>
-                    
-                </tr>
+                    @if($dt->is_admin == 0)
+                        <tr>
+                            <td>{{$i++}}</td>
+                            <td>{{$dt->name}}</td>
+                            <td>{{$dt->email}}</td>
+                            <td>
+                            <a href="{{ route('editLaboran', ['id' => $dt->id]) }}" class="btn btn-primary mr-1">Edit Data</i></a>
+                            <a href="{{ route('deleteLaboranData', ['id' => $dt->id]) }}" class="btn btn-danger mr-1">Hapus Data</i></a>
+                            </td>
+                        </tr>
+                    @endif
                 @endforeach
             </tbody>
         </table>

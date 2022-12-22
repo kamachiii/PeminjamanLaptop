@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataLaptop;
 use Illuminate\Http\Request;
 use App\Models\Peminjaman;
 use Illuminate\Support\Facades\Auth;
@@ -15,8 +16,8 @@ class PeminjamController extends Controller
 
     public function create(){
         $data = Peminjaman::all();
-        //dd($data);
-        return view('peminjam.create',compact('data'));
+        $laptop = DataLaptop::all();
+        return view('peminjam.create',compact('data', 'laptop'));
     }
 
     public function indexPeminjaman(){
@@ -30,13 +31,12 @@ class PeminjamController extends Controller
 
     public function storePeminjaman(Request $request){
         $request->validate([
-            'nisn' => 'required|min:8|max:8|unique:peminjaman,nisn',
+            'nisn' => 'required|min:8|max:8|unique',
             'nama' => 'required',
             'rombel' => 'required',
             'rayon' => 'required',
             'no_laptop' => 'required',
             'ruangan' => 'required'
-
         ]);
 
         Peminjaman::create([
@@ -46,7 +46,6 @@ class PeminjamController extends Controller
             'rayon' => $request->rayon,
             'no_laptop' => $request->no_laptop,
             'ruangan' => $request->ruangan
-
         ]);
 
         return redirect('/create')->with('success','Peminjaman Berhasil Dilakukan!');

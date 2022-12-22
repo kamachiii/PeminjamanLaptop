@@ -22,6 +22,7 @@ class LoginController extends Controller
 
             return redirect()->route('peminjaman');
         }
+        return back()->with('error', 'email or password incorrect');
     }
 
     public function logout(){
@@ -31,6 +32,6 @@ class LoginController extends Controller
 
         request()->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect('/');
     }
 }
